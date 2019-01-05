@@ -6,10 +6,9 @@ const initialState = {
   currentResult: null,
 };
 
-export function introReducer(state = initialState, action) {
+const introReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_NEW_RESULT:
-
+    case ADD_NEW_RESULT: {
       const currentResult = {
         id: `${new Date().toLocaleDateString()}-${new Date().toLocaleTimeString()}`,
         result: action.payload,
@@ -19,8 +18,11 @@ export function introReducer(state = initialState, action) {
       localStorage.setItem(DATA, JSON.stringify(sortedResults));
 
       return { ...state, results: sortedResults };
+    }
 
     default:
       return state;
   }
-}
+};
+
+export default introReducer;

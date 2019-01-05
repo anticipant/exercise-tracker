@@ -57,6 +57,7 @@
     "webpack-dev-server": "^2.7.1"
   },
   "dependencies": {
+    "autoprefixer": "^9.4.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^6.0.0",

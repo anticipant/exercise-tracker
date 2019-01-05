@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Link, Route, Redirect } from 'react-router-dom';
+import { Link, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { ResultsRankedTable } from '../components/ResultsRankedTable/ResultsRankedTable';
 import { ResultsTable } from '../components/ResultsTable/ResultsTable';
-
 
 const CustomLink = data => (
   <div>
@@ -27,7 +27,7 @@ const CustomLink = data => (
   </div>
 );
 
-const MenuLink = ({ label, to, activeOnlyWhenExact }) => (
+const MenuLink = ({ label, to, activeOnlyWhenExact = false }) => (
   <Route
     path={to}
     exact={activeOnlyWhenExact}
@@ -40,41 +40,23 @@ const MenuLink = ({ label, to, activeOnlyWhenExact }) => (
   />
 );
 
+MenuLink.propTypes = {
+  label: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+  activeOnlyWhenExact: PropTypes.bool.isRequired,
+};
+
 
 class Results extends Component {
   render() {
     const { data } = this.props;
-    return (
-      <React.Fragment>
-
-        {/* <CustomLink data={data}/> */}
-        {CustomLink(data)}
-
-        {/* <div className="anchor anchor--flex"> */}
-        {/* <Link className="anchor__btn" to="/table-results/ranked">Ranked</Link> */}
-        {/* <Link className="anchor__btn" to="/table-results/default">Default</Link> */}
-        {/* </div> */}
-
-        {/* {data.results.length ? ( */}
-        {/* <React.Fragment> */}
-        {/* <Route path="/table-results/ranked" render={() => { */}
-        {/* return ( */}
-        {/* <ResultsRankedTable data={data} /> */}
-        {/* ) */}
-        {/* }} /> */}
-        {/* <Route path="/table-results/default" render={() => { */}
-        {/* return ( */}
-        {/* <ResultsTable data={data} /> */}
-        {/* ) */}
-        {/* }} /> */}
-        {/* </React.Fragment> */}
-        {/* ) : ( */}
-        {/* <div>У вас еще не было тренировок</div> */}
-        {/* )} */}
-      </React.Fragment>
-    );
+    return CustomLink(data);
   }
 }
+
+Results.propTypes = {
+  data: PropTypes.object.isRequired,
+};
 
 const mapStateToProps = store => ({
   data: store.data,
