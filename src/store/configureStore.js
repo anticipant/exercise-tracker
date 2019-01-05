@@ -5,8 +5,9 @@ import logger from 'redux-logger';
 import thunk from 'redux-thunk';
 import { rootReducer } from '../reducers';
 
-// удалили "начальное состояние = initial state"
+// удалил "начальное состояние = initial state"
 // так как теперь наш редьюсер составной,
 // и нам нужны initialState каждого редьюсера.
 // Это будет сделано автоматически.
+
 export const store = createStore(rootReducer, applyMiddleware(thunk, logger));

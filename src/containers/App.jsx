@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { HashRouter as Router, Link, Route } from 'react-router-dom';
 import Results from './Results';
-import VkBlock from './VkBlock';
 import Intro from './Intro';
 
 export default class App extends Component {
@@ -17,8 +16,6 @@ export default class App extends Component {
 
             <Route exact path="/" component={Intro} />
             <Route path="/table-results" component={Results} />
-            <Route path="/vk" component={VkBlock} />
-
 
           </React.Fragment>
         </Router>
