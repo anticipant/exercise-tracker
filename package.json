@@ -1,0 +1,67 @@
+{
+  "name": "webpack-starter",
+  "version": "1.0.5",
+  "description": "simple webpack config",
+  "main": "index.js",
+  "scripts": {
+    "lint:js": "npx eslint . --ext .js,.jsx --fix",
+    "prebuild": "npm install",
+    "build": "cross-env production=true webpack --config webpack.config.js --progress --colors",
+    "prestart": "npm install",
+    "start": "webpack-dev-server --colors --hot --progress"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeeSwagger/webpack-starter.git"
+  },
+  "keywords": [
+    "webpack",
+    "es6",
+    "babel",
+    "eslint",
+    "react"
+  ],
+  "author": "anticipant",
+  "license": "ISC",
+  "homepage": "https://github.com/LeeSwagger/webpack-starter#readme",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^10.0.1",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.5",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "cross-env": "^5.1.3",
+    "css-loader": "^0.28.5",
+    "eslint": "^5.3.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.0",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.5",
+    "html-webpack-plugin": "^2.30.1",
+    "image-webpack-loader": "^3.4.2",
+    "lodash": "^4.17.4",
+    "node-sass": "^4.5.3",
+    "postcss-loader": "^3.0.0",
+    "prop-types": "^15.6.2",
+    "redux-logger": "^3.0.6",
+    "resolve-url-loader": "^2.1.0",
+    "sass-loader": "^6.0.6",
+    "sass-resources-loader": "^2.0.0",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.5.4",
+    "webpack-dev-server": "^2.7.1"
+  },
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^6.0.0",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0"
+  }
+}
