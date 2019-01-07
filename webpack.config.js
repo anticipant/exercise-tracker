@@ -23,16 +23,14 @@ const config = {
     filename: 'bundle.js',
     path: distPath,
   },
-  devtool: 'cheap-module-eval-source-map',
+  devtool: isDevelopment ? 'cheap-module-eval-source-map' : 'source-map',
   module: {
     rules: [{
-      // test: /\.js$/,
       test: /\.jsx?$/,
       exclude: [/node_modules/],
       use: [{
         loader: 'babel-loader',
         options: {
-          // presets: ['env', 'react'],
           presets: ['babel-preset-env', 'react'],
           plugins: [
             'transform-decorators-legacy',
@@ -62,26 +60,6 @@ const config = {
         ],
       }),
     },
-    //   {
-    //   test: /\.scss$/,
-    //   exclude: [/node_modules/],
-    //   use: extractSass.extract({
-    //     fallback: 'style-loader',
-    //     use: [{
-    //       loader: 'css-loader',
-    //       options: {
-    //         modules: true,
-    //         sourceMap: true,
-    //         importLoaders: 2,
-    //         localIdentName: '[name]__[local]__[hash:base64:5]', // className template
-    //         minimize: isProduction,
-    //       },
-    //     },
-    //       'sass-loader',
-    //       'resolve-url-loader',
-    //     ],
-    //   }),
-    // },
     {
       test: /\.(gif|png|jpe?g|svg)$/i,
       use: [{
@@ -147,8 +125,8 @@ if (isProduction) {
       },
     }),
     new CopyWebpackPlugin([
-      { from: 'public', to: '../docs' }
-    ])
+      { from: 'public', to: '../docs' },
+    ]),
   );
 }
 

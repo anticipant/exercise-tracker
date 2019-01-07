@@ -128,9 +128,13 @@ export default class Stopwatch extends React.Component {
     if (referrer) return <Redirect to={referrer} />;
     return (
       <div className="Stopwatch">
-        <div className="Stopwatch__last-result">
-          {lastResult ? `Last RESULT: ${lastResult}` : null}
-        </div>
+        {lastResult ? (
+          <div className="Stopwatch__last-result">
+            Last RESULT: $
+            {lastResult}
+          </div>
+        ) : null}
+
         <nav className="Stopwatch__controls">
           <button type="button" className="Stopwatch__controls-button Stopwatch__controls-button--start" onClick={this.start}>Start</button>
           <button type="button" className="Stopwatch__controls-button Stopwatch__controls-button--stop" onClick={this.stop}>Stop</button>
