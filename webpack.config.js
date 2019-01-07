@@ -108,6 +108,9 @@ const config = {
       },
     }],
   },
+  resolve: {
+    extensions: ['.js', '.jsx'],
+  },
   plugins: [
     extractSass,
     new HtmlWebpackPlugin({

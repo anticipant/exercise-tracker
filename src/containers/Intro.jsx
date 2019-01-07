@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { saveResult } from '../actions/IntroActions';
-import { Stopwatch } from '../components/Stopwatch/Stopwatch';
+import Stopwatch from '../components/Stopwatch/Stopwatch';
 
-class Intro extends Component {
-  render() {
-    const { data, saveResult } = this.props;
-    return (
-      <React.Fragment>
-        <div>
-Last RESULT:
-          {data.results[0].result}
-        </div>
-        <Stopwatch saveResult={saveResult} />
-      </React.Fragment>
-    );
-  }
-}
+const Intro = ({ data, saveResultAction }) => (
+  <Stopwatch
+    saveResult={saveResultAction}
+    lastResult={data.results[0] ? data.results[0].result : null}
+  />
+);
+
+Intro.propTypes = {
+  data: PropTypes.shape({
+    results: PropTypes.array.isRequired,
+  }).isRequired,
+  saveResultAction: PropTypes.func.isRequired,
+};
 
 const mapStateToProps = store => ({
   data: store.data,
 });
 const mapDispatchToProps = dispatch => ({
-  saveResult: currentResult => dispatch(saveResult(currentResult)),
+  saveResultAction: currentResult => dispatch(saveResult(currentResult)),
 });
 
 export default connect(

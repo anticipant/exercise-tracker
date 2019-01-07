@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { ResultsRankedTable } from '../components/ResultsRankedTable/ResultsRankedTable';
-import { ResultsTable } from '../components/ResultsTable/ResultsTable';
+import ResultsRankedTable from '../components/ResultsRankedTable/ResultsRankedTable';
+import ResultsTable from '../components/ResultsTable/ResultsTable';
 
-const CustomLink = data => (
+const CustomLink = ({ data }) => (
   <div>
     <div className="anchor anchor--flex">
-      <MenuLink to="/table-results/ranked" label="Ranked" />
-      <MenuLink to="/table-results/default" label="Default" />
+      <MenuLink to="/table-results/ranked" label="Рейтинг" />
+      <MenuLink to="/table-results/default" label="Результаты" />
     </div>
 
     <Route
@@ -26,36 +26,44 @@ const CustomLink = data => (
     />
   </div>
 );
+CustomLink.propTypes = {
+  data: PropTypes.shape({
+    results: PropTypes.array.isRequired,
+  }).isRequired,
+};
 
 const MenuLink = ({ label, to, activeOnlyWhenExact = false }) => (
   <Route
     path={to}
     exact={activeOnlyWhenExact}
-    children={({ match }) => (
-      <div className={match ? 'active' : ''}>
-        {/* <Link className="anchor__btn" to={to}>{label}</Link> */}
-        <Link className={`anchor__btn ${match ? 'anchor__btn--active' : ''}`} to={to}>{label}</Link>
-      </div>
-    )}
-  />
+  >
+    {
+      ({ match }) => (
+        <div className={match ? 'active' : ''}>
+          {/* <Link className="anchor__btn" to={to}>{label}</Link> */}
+          <Link className={`anchor__btn ${match ? 'anchor__btn--active' : ''}`} to={to}>{label}</Link>
+        </div>
+      )
+    }
+  </Route>
 );
 
 MenuLink.propTypes = {
   label: PropTypes.string.isRequired,
   to: PropTypes.string.isRequired,
-  activeOnlyWhenExact: PropTypes.bool.isRequired,
+  activeOnlyWhenExact: PropTypes.bool,
+};
+MenuLink.defaultProps = {
+  activeOnlyWhenExact: false,
 };
 
 
-class Results extends Component {
-  render() {
-    const { data } = this.props;
-    return CustomLink(data);
-  }
-}
+const Results = ({ data }) => <CustomLink data={data} />;
 
 Results.propTypes = {
-  data: PropTypes.object.isRequired,
+  data: PropTypes.shape({
+    results: PropTypes.array.isRequired,
+  }).isRequired,
 };
 
 const mapStateToProps = store => ({

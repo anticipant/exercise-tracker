@@ -3,7 +3,6 @@ import { ADD_NEW_RESULT } from '../actions/IntroActions';
 const DATA = 'data';
 const initialState = {
   results: JSON.parse(localStorage.getItem(DATA)) || [],
-  currentResult: null,
 };
 
 const introReducer = (state = initialState, action) => {
