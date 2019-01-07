@@ -19,3 +19,6 @@ npm run build
 ```
 
 Assets (*.css and *.js) will save in /public folder.
+
+## Demo mode
+

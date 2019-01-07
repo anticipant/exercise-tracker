@@ -3,6 +3,7 @@ const fs = require('fs');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const isDevelopment = !process.env.production;
 const isProduction = process.env.production;
@@ -145,6 +146,9 @@ if (isProduction) {
         unsafe: true,
       },
     }),
+    new CopyWebpackPlugin([
+      { from: 'public', to: '../docs' }
+    ])
   );
 }
 
