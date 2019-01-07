@@ -22,3 +22,4 @@ Assets (*.css and *.js) will save in /public folder.
 
 ## Demo mode
 
+https://anticipant.github.io/exercise-tracker/
