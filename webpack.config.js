@@ -16,7 +16,6 @@ const extractSass = new ExtractTextPlugin({
 
 const config = {
   entry: {
-    // app: './src/js/app.jsx',
     app: './src/index.jsx',
   },
   output: {
@@ -59,8 +58,7 @@ const config = {
         'resolve-url-loader',
         ],
       }),
-    },
-    {
+    }, {
       test: /\.(gif|png|jpe?g|svg)$/i,
       use: [{
         loader: 'file-loader',

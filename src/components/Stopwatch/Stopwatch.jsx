@@ -83,7 +83,6 @@ export default class Stopwatch extends React.Component {
     }
   };
 
-
   step(timestamp) {
     if (!this.running) return;
     this.calculate(timestamp);
